@@ -67,5 +67,11 @@ if __name__ == '__main__':
     print(f"tempo de execução A: {tempo_execucao_A} ms")
     print(f"tempo de execução B: {tempo_execucao_B} ms")
 
+    with open('tempo_de_execucao.txt', "w", encoding="utf-8") as file:
+            file.write(f"tempo de execução A: {tempo_execucao_A} ms\n")
+            file.write(f"tempo de execução B: {tempo_execucao_B} ms")
+            file.close()
+
     print("Executando testes")
+    print()
     main()
