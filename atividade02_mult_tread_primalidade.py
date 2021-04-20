@@ -9,7 +9,7 @@ from unittest import TestCase, main
 
 
 # Versão Primalidade Professor
-class Primo():
+class Primo:
 
     def eh_primo(n):
         for i in range(3, int(n**0.5+1), 2):

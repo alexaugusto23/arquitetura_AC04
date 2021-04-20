@@ -4,11 +4,38 @@ from threading import Thread, Condition
 import time
 import random
 
+condicao = Condition()
+fila_semafaro = []
+contador = 0
+
+class Produtor(Thread):
+    
+    def run(self):
+            print('\033[7;30;42mVerde\033[m')
+            time.sleep(3)
+            print('\033[7;30;43mAmarelo\033[m')
+            time.sleep(2)
+            print('\033[7;30;41mVermelho\033[m')
+            time.sleep(3)
+           
+            return
+
+class Consumidor(Thread):
+    def run(self):
+
+            return
+
+if __name__ == '__main__':
+    Produtor().start()
+    Consumidor().start()
+
+
+
+'''
 fila = []
 condicao = Condition()
 
-class Produtor(Thread):
-    def run(self):
+Produtor 
         nums = range(5)
         global fila
         while True:
@@ -20,8 +47,7 @@ class Produtor(Thread):
             condicao.release()
             time.sleep(random.random())
 
-class Consumidor(Thread):
-    def run(self):
+Consuumidor
         global fila
         while True:
             condicao.acquire()
@@ -35,5 +61,8 @@ class Consumidor(Thread):
             time.sleep(random.random())
 
 
-Produtor().start()
-Consumidor().start()
+'''
+# \033[style:text:backm
+# style: 0 none, 1 bold, 4 undeline, 7 negative
+# text: 30 white, 31 red, 32 green, 33 yellow, 34 blue, 35 purple, 36 cyan , 37 gray
+# back: 40 white, 41 red, 42 green, 43 yellow, 44 blue, 45 purple, 46 cyan , 47 gray
