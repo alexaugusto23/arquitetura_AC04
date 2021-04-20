@@ -9,13 +9,28 @@ fila_semafaro = []
 contador = 0
 
 class Produtor(Thread):
-    
+    global fila_semafaro
     def run(self):
-            print('\033[7;30;42mVerde\033[m')
+            valor = '\033[7;30;42mVerde\033[m'
+            condicao.acquire()
+            fila_semafaro.append(valor)
+            print(fila_semafaro[0])
+            condicao.notify()
+            condicao.release()
             time.sleep(3)
-            print('\033[7;30;43mAmarelo\033[m')
+
+            valor = '\033[7;30;43mAmarelo\033[m'
+            condicao.acquire()
+            print()
+            condicao.notify()
+            condicao.release()
             time.sleep(2)
-            print('\033[7;30;41mVermelho\033[m')
+
+            valor = '\033[7;30;41mVermelho\033[m'
+            condicao.acquire()
+            print()
+            condicao.notify()
+            condicao.release()
             time.sleep(3)
            
             return
