@@ -14,29 +14,56 @@ class Produtor(Thread):
             valor = '\033[7;30;42mVerde\033[m'
             condicao.acquire()
             fila_semafaro.append(valor)
-            print(fila_semafaro[0])
+            print(f"Produzindo: {fila_semafaro[0]}")
+            print(f"Status da Fila: {fila_semafaro}")
             condicao.notify()
             condicao.release()
             time.sleep(3)
 
             valor = '\033[7;30;43mAmarelo\033[m'
             condicao.acquire()
-            print()
+            fila_semafaro.append(valor)
+            print(f"Produzindo: {fila_semafaro[0]}")
+            print(f"Status da Fila: {fila_semafaro}")
             condicao.notify()
             condicao.release()
             time.sleep(2)
 
             valor = '\033[7;30;41mVermelho\033[m'
             condicao.acquire()
-            print()
+            fila_semafaro.append(valor)
+            print(f"Produzindo: {fila_semafaro[0]}")
+            print(f"Status da Fila: {fila_semafaro}")
             condicao.notify()
             condicao.release()
             time.sleep(3)
+
+            print(f"Fila Consumida: {fila_semafaro}")
            
             return
 
 class Consumidor(Thread):
     def run(self):
+        while True:
+            condicao.acquire(3)
+            if not fila_semafaro:
+                print("Fila vazia, consumidor aguardando ...")
+                condicao.wait()
+                print("Produtor incluiu algum elemento na fila..")
+            
+            print(f"Consumido: {fila_semafaro.pop()}")
+            print(f"Status da Fila: {fila_semafaro}")
+            
+            condicao.wait()
+            print(f"Consumido: {fila_semafaro.pop()}")
+            print(f"Status da Fila: {fila_semafaro}")
+            condicao.release()
+
+            condicao.acquire()
+            condicao.wait()
+            print(f"Consumido: {fila_semafaro.pop()}")
+            print(f"Status da Fila: {fila_semafaro}")
+            condicao.release()
 
             return
 
