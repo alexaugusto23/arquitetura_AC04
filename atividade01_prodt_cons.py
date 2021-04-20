@@ -37,4 +37,3 @@ class Consumidor(Thread):
 
 Produtor().start()
 Consumidor().start()
-
