@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import pika
 from pika import connection
 from pika import channel
