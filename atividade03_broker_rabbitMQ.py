@@ -7,7 +7,7 @@
 # Oque são middleware de mensagens ou Brokers:
 '''
 è um sistema que promove serviços e 
-reucrsos entre aplicações, por isso o 
+recursos entre aplicações, por isso o 
 nome de middleware, pois ele faz o intermédio 
 entre os sistemas.
 '''
