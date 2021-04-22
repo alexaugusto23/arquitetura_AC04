@@ -7,9 +7,11 @@ url = 'amqps://kyiirjzl:Ttd_gMalcqGWy92iOk8_dEe6PvEdWr4V@fish.rmq.cloudamqp.com/
 parametros = pika.URLParameters(url)
 connection = pika.BlockingConnection(parametros)
 channel = connection.channel()
-channel.queue_declare(queue='hello')
+channel.queue_declare(queue='Semaforo_Queue')
 
-def callback(ch, method, properties, body):
-    print("[x] Recebido %r" %(body))
+channel.basic_publish(exchange='',
+                      routing_key='Semaforo_Queue',
+                      body='Hello World!')
+print(" [x] Enviado 'Hello World!'")
 
-channel.basic_consume(callback,)
+connection.close()
