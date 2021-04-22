@@ -1,2 +1,2 @@
-tempo de execução A: 9.008646011352539 ms
-tempo de execução B: 7.9898834228515625 ms
+tempo de execução A: 2.966165542602539 ms
+tempo de execução B: 6.004095077514648 ms
