@@ -3,6 +3,9 @@ import pika, sys, os
 from pika import connection
 from pika import channel
 #pip install pika
+#Usar um terminal no cmd para enviar as mensagem pelo programa producer
+# e deixar o programa consumer rodando em outro terminal a parte para 
+# ver as mensagens recebidas.
 
 def main():
 
@@ -14,16 +17,11 @@ def main():
 
 
     def callback(ch, method, properties, body):
-        print(" [x] Received %r" % body)
+        print(body.decode())
 
     channel.basic_consume(queue='Semaforo_Queue',
                         auto_ack=True,
                         on_message_callback=callback)
-
-    channel.basic_consume(queue='Semaforo_Queue', 
-                        on_message_callback=callback, 
-                        auto_ack=True)
-
 
     channel.start_consuming()
 
@@ -31,7 +29,7 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
-        print('Interrompido')
+        print('Interrompido pelo Usuário Crtl+C')
         try:
             sys.exit(0)
         except SystemExit:
