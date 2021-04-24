@@ -10,14 +10,14 @@ url = 'amqps://kyiirjzl:Ttd_gMalcqGWy92iOk8_dEe6PvEdWr4V@fish.rmq.cloudamqp.com/
 parametros = pika.URLParameters(url)
 connection = pika.BlockingConnection(parametros)
 channel = connection.channel()
-channel.queue_declare(queue='Semaforo_Queue')
+channel.queue_declare(queue='Queue_Data')
 
 messagem = "Data e Hora:\n" + data_atual + "\n" + tempo_atual
 
 channel.basic_publish(exchange='',
-                      routing_key='Semaforo_Queue',
+                      routing_key='Queue_Data',
                       body=messagem)
-print("Enviado 'Olá Mundo!'")
+print("Data Enviada!'")
 
 
 connection.close()

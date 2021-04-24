@@ -14,13 +14,13 @@ def main():
     parametros = pika.URLParameters(url)
     connection = pika.BlockingConnection(parametros)
     channel = connection.channel()
-    channel.queue_declare(queue='Semaforo_Queue')
+    channel.queue_declare(queue='Queue_Data')
 
 
     def callback(ch, method, properties, body):
         print(body.decode())
 
-    channel.basic_consume(queue='Semaforo_Queue',
+    channel.basic_consume(queue='Queue_Data',
                         auto_ack=True,
                         on_message_callback=callback)
 
@@ -30,7 +30,6 @@ def main():
 if __name__ == '__main__':
     try:
         main()
-        
     except KeyboardInterrupt:
         print('Interrompido pelo Usuário Crtl+C')
         try:
