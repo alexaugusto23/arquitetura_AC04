@@ -2,6 +2,7 @@
 import pika, sys, os
 from pika import connection
 from pika import channel
+
 #pip install pika
 #Usar um terminal no cmd para enviar as mensagem pelo programa producer
 # e deixar o programa consumer rodando em outro terminal a parte para 
@@ -24,10 +25,12 @@ def main():
                         on_message_callback=callback)
 
     channel.start_consuming()
+    
 
 if __name__ == '__main__':
     try:
         main()
+        
     except KeyboardInterrupt:
         print('Interrompido pelo Usuário Crtl+C')
         try:
